@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Buynow</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome </h2>
+
+  <form [formGroup]="buyStock" (ngSubmit)="logForm()">
+   
+    <ion-item>
+    <ion-label color="primary" floating>Stock Name</ion-label>
+    <ion-input type="text"  formControlName="StockName" ></ion-input>
+    </ion-item>
+  
+  
+  
+  
+  <ion-item>
+  <ion-label color="primary" floating>Quantity</ion-label>
+  <ion-input type="number"  placeholder="" formControlName="Quantity"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+  <ion-label color="primary" floating>Price</ion-label>
+  <ion-input type="number" formControlName="Price" (ngModelChange)="changeQuantity($event)"></ion-input>
+  </ion-item>
+ 
+  <button ion-button type="submit" [disabled]="!buyStock.valid">Submit</button>   
+ 
+
+  
+  <ion-auto-complete [dataProvider]="listedStocksService"></ion-auto-complete>  
+ </form>
+
+  </ion-content>
+
+  
